@@ -36,27 +36,26 @@ export async function GET(request: Request) {
     label: 'Donate',
     links: {
       actions: [
-        // @ts-expect-error type optional
         {
           label: 'Donate 0.1 SOL',
           href: `${url.href}?amount=0.1`,
+          type: 'transaction',
         },
-        // @ts-expect-error type optional
         {
           label: 'Donate 1 SOL',
           href: `${url.href}?amount=1`,
+          type: 'transaction',
         },
-        // @ts-expect-error type optional
         {
           label: 'Donate 2 SOL',
           href: `${url.href}?amount=2`,
+          type: 'transaction',
         },
-        // @ts-expect-error type optional
         {
           label: 'Donate 5 SOL',
           href: `${url.href}?amount=5`,
+          type: 'transaction',
         },
-        // @ts-expect-error type optional
         {
           label: 'Donate SOL',
           href: `${url.href}?amount={amount}`,
@@ -67,6 +66,7 @@ export async function GET(request: Request) {
               required: true,
             },
           ],
+          type: 'transaction',
         },
       ],
     },

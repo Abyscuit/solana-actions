@@ -1,8 +1,9 @@
 import {
-  ACTIONS_CORS_HEADERS,
+  // ACTIONS_CORS_HEADERS,
   ActionGetResponse,
   ActionPostRequest,
   ActionPostResponse,
+  BLOCKCHAIN_IDS,
   createPostResponse,
 } from '@solana/actions';
 import {
@@ -14,6 +15,17 @@ import {
   clusterApiUrl,
 } from '@solana/web3.js';
 
+const ACTIONS_CORS_HEADERS: Record<string, string> = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,POST,PUT,OPTIONS',
+  'Access-Control-Allow-Headers':
+    'Content-Type, Authorization, Content-Encoding, Accept-Encoding, X-Accept-Action-Version, X-Accept-Blockchain-Ids',
+  'Access-Control-Expose-Headers': 'X-Action-Version, X-Blockchain-Ids',
+  'Content-Type': 'application/json',
+  'X-Blockchain-Ids': BLOCKCHAIN_IDS.mainnet,
+  'X-Action-Version': '2.4.1',
+};
+
 // GET request handler
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -24,30 +36,30 @@ export async function GET(request: Request) {
     label: 'Donate',
     links: {
       actions: [
+        // @ts-expect-error type optional
         {
           label: 'Donate 0.1 SOL',
           href: `${url.href}?amount=0.1`,
-          type: 'transaction',
         },
+        // @ts-expect-error type optional
         {
           label: 'Donate 1 SOL',
           href: `${url.href}?amount=1`,
-          type: 'transaction',
         },
+        // @ts-expect-error type optional
         {
           label: 'Donate 2 SOL',
           href: `${url.href}?amount=2`,
-          type: 'transaction',
         },
+        // @ts-expect-error type optional
         {
           label: 'Donate 5 SOL',
           href: `${url.href}?amount=5`,
-          type: 'transaction',
         },
+        // @ts-expect-error type optional
         {
           label: 'Donate SOL',
           href: `${url.href}?amount={amount}`,
-          type: 'transaction',
           parameters: [
             {
               name: 'amount',
